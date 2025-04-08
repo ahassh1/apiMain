@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users api</title>
+</head>
+<style>
+    .user{
+        color: royalblue;
+    }
+</style>
+<body>
+    <input type="text" id="user-count"> <button id="load-user">  Load User</button>
+    <div id="users">
+
+    </div>
+    <div id="user-detail">
+
+    </div>
+    <script>
+        document.getElementById('load-user').addEventListener('click',function(){
+            const countText = document.getElementById('user-count').value;
+            const count = parseInt(countText)
+
+                   
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res=> res.json())
+        .then(data =>{
+            data= data.slice(0,count);
+            const userContainer= document.getElementById('users');
+            userContainer.innerHTML='';
+            for (let i = 0; i < array.length; i++) {
+                const user = data[i];
+                const p= document.createElement('p')
+                p.innerHTML= 
+                 `<p class="user"> Name:<strong>${user.name} </strong> <button onclick="getUserDetails(${user.id})"> Get Details -${user.id}</button> </p>`;
+                userContainer.appendChild(p)
+            }
+        } )
+        })
+
+ 
+        function getUserDetails(userId){
+            fetch( `https://jsonplaceholder.typicode.com/users${userId}`)
+            .then(res => res.json())
+            .then(data =>{
+                const detail = document.getElementById('user-detail');
+                detail.innerHTML =  `
+                <h2> ${data.name}</h2>
+                <h2> ${data.email}</h2>
+                <h2> ${data.phone}</h2>
+                `
+            })
+        }
+    </script>
+</body>
+</html>
