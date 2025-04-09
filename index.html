@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .card{
+            padding: 39px;
+            margin: 32px;
+            border-radius: 6px;
+            background-color: aqua;
+            box-shadow: 3px 5px 10px gray;
+            text-align: center;
+
+        }
+    </style>
 </head>
 <body>
     <h1>JSON</h1>
     <h2>JavaScript Object Notation</h2>
-    <script>
+    <div id="postContainer" class="post-container">
+
+    </div>
+    <!-- <button id="handlePost()" >Load Post</button> -->
+    <!-- <script>
         const user ={
             id:85,
             name:'polash',
@@ -23,6 +38,7 @@
         console.log(userJSON);
         const userFromJSON = JSON.parse(userJSON)
         console.log(userFromJSON)
-    </script>
+    </script> -->
+    <script src="./app.js"></script>
 </body>
 </html>
